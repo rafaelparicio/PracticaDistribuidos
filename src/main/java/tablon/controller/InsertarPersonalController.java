@@ -15,7 +15,7 @@ public class InsertarPersonalController {
 	@Autowired
 	private PersonalRepository repositorioPersonal;
 
-	@RequestMapping("/nuevoPersonal")
+	@RequestMapping("/insertarPersonal")
 	public String insertar(@RequestParam long id, @RequestParam String nombre,@RequestParam String apellidos, @RequestParam String email, @RequestParam String fijo, @RequestParam String movil, Model model) {
 
         Personal personal = new Personal();
@@ -30,6 +30,6 @@ public class InsertarPersonalController {
 		repositorioPersonal.save(personal);
 
 		//return "insertarPersonal";
-		return "personalInsertado";
+		return "insertarPersonal";
 	}
 }
