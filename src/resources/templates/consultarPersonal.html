@@ -6,10 +6,10 @@
 	
 	<h1>Personal</h1>
 	
-	<select id="Tipo" NAME=”tipo”>
-			<option value=”gestion”>Tipo</option>
-			<option value=”vigilancia”>Apellido</option>
-			<option value=”conservacion”>Nombre y Apellidos</option>
+	<select id="Tipo" NAME="select">
+			<option value="tipo">Tipo</option>
+			<option value="apellido">Apellido</option>
+			<option value="nombreyapellido">Nombre y Apellidos</option>
 	</select>
 	
 	<input id="Texto" type="text" name="Texto">
@@ -20,10 +20,10 @@
 		//<![CDATA[		
 		function boton_Consultar(texto){
 			var valor = document.getElementById("Tipo").value;
-			if(valor = "Apellido"){
+			if(valor = "tipo"){
 				document.getElementById("Consultas").innerHTML = 
-			"<p th:each="personal : ${personalList}>";
-				if(texto = ${personal.nombre}){
+			"<p th:each="personal : ${variosPersonal}>";
+				if(texto = ${personal.tipo}){
 					document.getElementById("Consultas").innerHTML =
 						"	<span th:text="'Nombre:' + ${personal.nombre}" /> <br/>
 							<span th:text="'Apellidos:' + ${personal.apellidos}" /> <br/>
@@ -35,14 +35,37 @@
 						</p>";
 				}					
 			}
-			else if(valor = "vigilancia"){
-				
+			else if(valor = "apellido"){
+				document.getElementById("Consultas").innerHTML = 
+					"<p th:each="personal : ${variosPersonal}>";
+						if(texto = ${personal.apellido}){
+							document.getElementById("Consultas").innerHTML =
+								"	<span th:text="'Nombre:' + ${personal.nombre}" /> <br/>
+									<span th:text="'Apellidos:' + ${personal.apellidos}" /> <br/>
+									<span th:text="'Email:' + ${personal.email}" /> <br/>
+									<span th:text="'Fijo:' + ${personal.fijo}" /> <br/>				
+									<span th:text="'Movil:' + ${personal.movil}" /> <br/>
+									<span th:text="'Tipo:' + ${personal.tipo}" /> <br/>
+									<input id="Modificar" type="button" value="Modificar" onclick="parent.location='modificarPersonal.html'">
+								</p>";
+						}					
 			}
-			else if(valor = "conservacion"){
-				
-			}
-			else if(valor = "investigacion"){
-				
+			else if(valor = "nombreyapellido"){
+				document.getElementById("Consultas").innerHTML = 
+					"<p th:each="personal : ${variosPersonal}>";
+						// ahora hay que separar texto en nombre y apellido
+						// texto = texto1 y texto 2
+						if( (texto1 = ${personal.nombre}) && (texto2 = ${personal.apellido}) ){
+							document.getElementById("Consultas").innerHTML =
+								"	<span th:text="'Nombre:' + ${personal.nombre}" /> <br/>
+									<span th:text="'Apellidos:' + ${personal.apellidos}" /> <br/>
+									<span th:text="'Email:' + ${personal.email}" /> <br/>
+									<span th:text="'Fijo:' + ${personal.fijo}" /> <br/>				
+									<span th:text="'Movil:' + ${personal.movil}" /> <br/>
+									<span th:text="'Tipo:' + ${personal.tipo}" /> <br/>
+									<input id="Modificar" type="button" value="Modificar" onclick="parent.location='modificarPersonal.html'">
+								</p>";
+						}					
 			}
 			
 		}
@@ -54,7 +77,7 @@
 		
 	</div>	
 	
-	<a href="/">Volver</a>
+	<a href="/homePersonal">Volver</a>
 	
 </body>
 </html>

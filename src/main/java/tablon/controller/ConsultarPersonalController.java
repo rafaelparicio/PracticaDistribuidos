@@ -12,18 +12,38 @@ import tablon.model.Personal;
 import tablon.repository.PersonalRepository;
 
 @Controller
-public class ConsultarPersonal{
+public class ConsultarPersonalController{
 
 	@Autowired
 	private PersonalRepository repositorioPersonal;
 
 	@RequestMapping("/consultarPersonal")
-	public String mostrar(@RequestParam String nombre, @RequestParam String apellido, Model model) {
+	public String mostrarPorNombreYApellido(@RequestParam String nombre, @RequestParam String apellido, Model model) {
 
 		List<Personal> variosPersonal = repositorioPersonal.findAllByNombreAndApellido(nombre, apellido);
 
 	    model.addAttribute("personalList", variosPersonal);
 
-		return "consultarPersonal";
+		return "/consultarPersonal";
 	}
+	
+	@RequestMapping("/consultarPersonal")
+	public String mostrarPorApellido(@RequestParam String apellido, Model model) {
+
+		List<Personal> variosPersonal = repositorioPersonal.findAllByApellido(apellido);
+
+	    model.addAttribute("personalList", variosPersonal);
+
+		return "/consultarPersonal";
+	}
+	
+	@RequestMapping("/consultarPersonal")
+	public String mostrarPorTipo(@RequestParam String tipo, Model model) {
+
+		List<Personal> variosPersonal = repositorioPersonal.findAllByTipo(tipo);
+
+	    model.addAttribute("personalList", variosPersonal);
+
+		return "/consultarPersonal";
+	}	
 }
