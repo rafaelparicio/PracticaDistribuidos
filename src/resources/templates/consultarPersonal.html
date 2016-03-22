@@ -14,14 +14,13 @@
 	</select>
 	
 	<input id="Texto" type="text" name="Texto">
-	<input id="Consultar" type="button" value="Consultar" onclick="boton_Consultar()" onclick="alert(Consultando...)">
+	<input id="Consultar" type="button" value="Consultar" onclick="boton_Consultar(getElementById('Texto').value)" onclick="alert(Consultando...)">
 		
 			
 		<script type="text/javascript">
 		//<![CDATA[		
-		function boton_Consultar(){
+		function boton_Consultar(texto){
 			var valor = document.getElementById("Tipo").value;
-			var texto = document.getElementById("Texto").value;
 			if(valor = "gestion"){
 				document.getElementById("Consultas").innerHTML = 
 			"<p th:each="personal : ${personalList}>";
