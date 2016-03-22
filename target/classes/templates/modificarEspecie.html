@@ -1,0 +1,26 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	
+	<h1>Especie a modificar</h1>
+	
+		<form action="/personalInsertado" method="post">
+			<p>
+				<b>Nombre Comun:</b> <input type='text' name='nombreComun' value="${especie.nombreComun}"/>
+			</p>
+		    <p>
+				<b>Nombre Cientifico:</b> <input type='text' name='nombreCientifico' value="${especie.nombreCientifico}"/>
+			</p>
+			
+			<select NAME=”tipo” value="${especie.tipo}">
+				<option value=”vegetal”>Vegetal</option>
+				<option value=”animal”>Animal</option>
+				<option value=”hongo”>Homgo</option>
+			</select>
+			
+			<!-- CheckBox Areas -->
+			
+			<input type='submit' value='Enviar' />
+			<a href="/" class="button">Volver</a>
+	</form>
+</body>
+</html>

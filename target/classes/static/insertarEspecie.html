@@ -1,0 +1,29 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+
+	<h1>Nueva Especie</h1>
+
+	<form action="/especieInsertada" method="post">
+		<p>
+			<b>Nombre Comun:</b> <input type='text' name='nombreComun' />
+		</p>
+	    <p>
+			<b>Nombre Cientifico:</b> <input type='text' name='nombreCientifico' />
+		</p>
+		
+		<select NAME=”tipo”>
+			<option value=”vegetal”>Vegetal</option>
+			<option value=”animal”>Animal</option>
+			<option value=”hongo”>Homgo</option>
+		</select>
+		
+		<!-- CheckBox Areas -->
+		
+		<input type='submit' value='Enviar' />
+		<a href="/" class="button">Cancelar</a>
+	</form>
+</body>
+</html>
