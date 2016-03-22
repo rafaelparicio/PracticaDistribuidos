@@ -29,6 +29,6 @@ public class ModificarPersonalControler {
 		repositorioPersonal.save(personal);
 
 		//return "insertarPersonal";
-		return "personalInsertado";
+		return "modificarPersonal";
 	}
 }
