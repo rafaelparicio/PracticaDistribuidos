@@ -1,5 +1,7 @@
 package tablon.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,26 +12,18 @@ import tablon.model.Personal;
 import tablon.repository.PersonalRepository;
 
 @Controller
-public class ConsultarPersonal {
+public class ConsultarPersonal{
 
 	@Autowired
 	private PersonalRepository repositorioPersonal;
 
 	@RequestMapping("/consultarPersonal")
-	public String insertar(@RequestParam long id, @RequestParam String nombre,@RequestParam String apellidos, @RequestParam String email, @RequestParam String fijo, @RequestParam String movil, Model model) {
+	public String mostrar(@RequestParam String nombre, @RequestParam String apellido, Model model) {
 
-        Personal personal = new Personal();
-        
-        personal.setId(id);
-        personal.setNombre(nombre);
-        personal.setApellidos(apellidos);
-        personal.setEmail(email);
-        personal.setFijo(fijo);
-        personal.setMovil(movil);
-        
-		repositorioPersonal.save(personal);
+		List<Personal> variosPersonal = repositorioPersonal.findAllByNombreAndApellido(nombre, apellido);
 
-		//return "insertarPersonal";
-		return "personalInsertado";
+	    model.addAttribute("personalList", variosPersonal);
+
+		return "consultarPersonal";
 	}
 }
