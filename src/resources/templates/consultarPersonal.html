@@ -1,0 +1,65 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<!-- Tipo -->
+	<!-- Caja de texto -->
+	<!-- Cancelar 		Buscar -->
+	
+	<h1>Personal</h1>
+	
+	<select id="Tipo" NAME=”tipo”>
+			<option value=”gestion”>Gestión</option>
+			<option value=”vigilancia”>Vigilancia</option>
+			<option value=”conservacion”>Conservación</option>
+			<option value=”investigacion”>Investigación</option>
+	</select>
+	
+	<input id="Texto" type="text" name="Texto">
+	<input id="Consultar" type="button" value="Consultar" onclick="boton_Consultar()" onclick="alert(Consultando...)">
+		
+			
+		<script type="text/javascript">
+		//<![CDATA[		
+		function boton_Consultar(){
+			var valor = document.getElementById("Tipo").value;
+			var texto = document.getElementById("Texto").value;
+			if(valor = "gestion"){
+				document.getElementById("Consultas").innerHTML = 
+			"<p th:each="personal : ${personalList}>";
+				if(texto = ${personal.nombre}){
+					document.getElementById("Consultas").innerHTML =
+						"	<span th:text="'Nombre:' + ${personal.nombre}" /> <br/>
+							<span th:text="'Apellidos:' + ${personal.apellidos}" /> <br/>
+							<span th:text="'Email:' + ${personal.email}" /> <br/>
+							<span th:text="'Fijo:' + ${personal.fijo}" /> <br/>				
+							<span th:text="'Movil:' + ${personal.movil}" /> <br/>
+							<span th:text="'Tipo:' + ${personal.tipo}" /> <br/>
+							<input id="Modificar" type="button" value="Modificar" onclick="parent.location='modificarPersonal.html'">
+						</p>";
+				}					
+			}
+			else if(valor = "vigilancia"){
+				
+			}
+			else if(valor = "conservacion"){
+				
+			}
+			else if(valor = "investigacion"){
+				
+			}
+			
+		}
+		
+		//]]>
+	</script>
+	
+	<div id="Consultas">
+		Hola
+	</div>	
+		
+	
+	
+	
+	<a href="/">Volver</a>
+	
+</body>
+</html>
