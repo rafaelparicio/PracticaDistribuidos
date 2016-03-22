@@ -7,21 +7,20 @@
 	<h1>Personal</h1>
 	
 	<select id="Tipo" NAME=”tipo”>
-			<option value=”gestion”>Gestión</option>
-			<option value=”vigilancia”>Vigilancia</option>
-			<option value=”conservacion”>Conservación</option>
-			<option value=”investigacion”>Investigación</option>
+			<option value=”gestion”>Tipo</option>
+			<option value=”vigilancia”>Apellido</option>
+			<option value=”conservacion”>Nombre y Apellidos</option>
 	</select>
 	
 	<input id="Texto" type="text" name="Texto">
-	<input id="Consultar" type="button" value="Consultar" onclick="boton_Consultar(getElementById('Texto').value)" onclick="alert(Consultando...)">
+	<input id="Consultar" type="button" value="Consultar" onclick="boton_Consultar(getElementById('Texto').value)">
 		
 			
 		<script type="text/javascript">
 		//<![CDATA[		
 		function boton_Consultar(texto){
 			var valor = document.getElementById("Tipo").value;
-			if(valor = "gestion"){
+			if(valor = "Apellido"){
 				document.getElementById("Consultas").innerHTML = 
 			"<p th:each="personal : ${personalList}>";
 				if(texto = ${personal.nombre}){
@@ -52,11 +51,8 @@
 	</script>
 	
 	<div id="Consultas">
-		Hola
-	</div>	
 		
-	
-	
+	</div>	
 	
 	<a href="/">Volver</a>
 	
