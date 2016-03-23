@@ -1,8 +1,7 @@
 package tablon.controller;
 
-import java.util.Collection;
-import java.util.List;
 
+import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +17,7 @@ public class ModificarEspecieControler {
 	private EspecieRepository repositorioEspecie;
 
 	@RequestMapping("/modificarEspecie") //Quizas funcione mejor @RequestMapping("modificarPersonal")
-	public String insertar(@RequestParam long id, @RequestParam String tipo,@RequestParam String nombreComun, @RequestParam String nombreCientifico, @RequestParam Collection<Area> areas) {
+	public String insertar(@RequestParam long id, @RequestParam String tipo,@RequestParam String nombreComun, @RequestParam String nombreCientifico, @RequestParam List areas) {
 
         Especie especie = repositorioEspecie.findById(id);
         

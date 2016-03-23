@@ -2,6 +2,7 @@ package tablon.controller;
 
 import java.util.Collection;
 
+import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +22,7 @@ public class InsertarEspecieController {
 
 	@RequestMapping("/insertarEspecie")
 	public String insertar(@RequestParam String tipo, @RequestParam String nombreComun, @RequestParam String nombreCientifico,
-			Collection<Area> areas, Model model) {
+			List areas, Model model) {
 
 		Especie a = new Especie();
 		a.setTipo(tipo);

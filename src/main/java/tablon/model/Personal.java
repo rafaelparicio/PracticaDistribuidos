@@ -40,11 +40,11 @@ public class Personal {
 	}
 
 	public String getApellidos() {
-		return apellidos;
+		return this.apellidos;
 	}
 
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
+	public void setApellidos(String apellidos2) {
+		this.apellidos = apellidos2;
 	}
 
 	public String getTipo() {
@@ -77,6 +77,6 @@ public class Personal {
 
 	@Override
 	public String toString() {
-		return "Persona [Id: " + id + ", Nombre: " + nombre + ", Apellidos: " + apellidos + ", Email: " + email + "Fijo: " + fijo + "Movil: " + movil + "Tipo:" + tipo + "]";
+		return "Persona [Id: " + id + ", Nombre: " + nombre + ", Apellidos: " + this.apellidos + ", Email: " + email + "Fijo: " + fijo + "Movil: " + movil + "Tipo:" + tipo + "]";
 	}
 }

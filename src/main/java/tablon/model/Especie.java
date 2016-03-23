@@ -2,7 +2,6 @@ package tablon.model;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -11,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
+
+import org.hibernate.mapping.List;
 
 @Entity
 public class Especie {
@@ -21,7 +22,7 @@ public class Especie {
 	private String tipo;
 	private String nombreComun;
 	private String nombreCientifico;
-	private Collection<Area> areas;
+	private List areas;
 	
 
 	public long getId() {
@@ -56,21 +57,21 @@ public class Especie {
 		this.nombreCientifico = nombreCientifico;
 	}
 
-	public Collection<Area> getAreas() {
+	public List getAreas() {
 		return this.areas;
 	}
 
-	public void setAreas(Collection<Area> areas) {
-		this.areas = areas;
+	public void setAreas(org.hibernate.mapping.List areas2) {
+		this.areas = areas2;
 	}
 	
 	
 	public void addArea(Area area){
-		this.areas.add(area);
+		((Collection<Area>) this.areas).add(area);
 	}
 	
 	public void addArea(Collection<Area> areas){
-		this.areas.addAll(areas);
+		((Collection<Area>) this.areas).addAll(areas);
 	}
 	
 	@Override
@@ -79,7 +80,7 @@ public class Especie {
 		mainString = "Especie [Id: " + id + ", Tipo: " + tipo + ", NombreComun: " + this.nombreComun + ", Nombre Cientifico: " + this.nombreCientifico + "Areas: ";
 		
 		boolean firstPassed = false; //Para dejarlo bonito
-		Iterator<Area> it = this.areas.iterator();
+		Iterator<Area> it = ((Collection<Area>) this.areas).iterator();
 		while(it.hasNext()){
 			if(!firstPassed){
 				mainString += it.next().toString();

@@ -17,8 +17,8 @@ public interface PersonalRepository extends JpaRepository<Personal, Long> {
 	List<Personal> findAllByOrderByIdAsc();
 
 	List<Personal> findAllByTipo(String tipo);
-	List<Personal> findAllByApellido(String apellido);
-	List<Personal> findAllByNombreAndApellido(String nombre, String apellido);
+	List<Personal> findAllByApellidos(String apellidos2);
+	List<Personal> findAllByNombreAndApellidos(String nombre, String apellidos2);
 
 	
 }

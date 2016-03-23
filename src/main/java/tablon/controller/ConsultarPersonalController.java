@@ -18,19 +18,19 @@ public class ConsultarPersonalController{
 	private PersonalRepository repositorioPersonal;
 
 	@RequestMapping("/consultarPersonal")
-	public String mostrarPorNombreYApellido(@RequestParam String nombre, @RequestParam String apellido, Model model) {
+	public String mostrarPorNombreYApellidos(@RequestParam String nombre, @RequestParam String apellidos2, Model model) {
 
-		List<Personal> variosPersonal = repositorioPersonal.findAllByNombreAndApellido(nombre, apellido);
+		List<Personal> variosPersonal = repositorioPersonal.findAllByNombreAndApellidos(nombre, apellidos2);
 
 	    model.addAttribute("personalList", variosPersonal);
 
 		return "/consultarPersonal";
 	}
-	
+	/*
 	@RequestMapping("/consultarPersonal")
 	public String mostrarPorApellido(@RequestParam String apellido, Model model) {
 
-		List<Personal> variosPersonal = repositorioPersonal.findAllByApellido(apellido);
+		List<Personal> variosPersonal = repositorioPersonal.findAllByApellidos(apellido);
 
 	    model.addAttribute("personalList", variosPersonal);
 
@@ -45,5 +45,5 @@ public class ConsultarPersonalController{
 	    model.addAttribute("personalList", variosPersonal);
 
 		return "/consultarPersonal";
-	}	
+	}*/
 }
